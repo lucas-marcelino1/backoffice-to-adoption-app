@@ -28,12 +28,15 @@ describe 'Usuário acessa a tela inicial' do
 
     end
 
-    it 'E visualiza não há adoções disponíveis' do 
+    it 'E visualiza a mensagem não há adoções disponíveis' do 
 
         visit root_path
 
         expect(page).to have_content('Não há adoções disponíveis!')
 
     end
+
+   
+
 
 end
