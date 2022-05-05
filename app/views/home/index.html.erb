@@ -1,0 +1,19 @@
+<h1> Adoção de animais online </h1>
+
+
+<% if @animals.any? %>
+
+    <% @animals.each do |a| %>
+
+        <div>
+            <p>Nome: <%= a.name %> </p>
+            <p>Sexo: <%= a.sex %> </p>
+            <p>Idade: <%= a.age %> </p>
+            <p>Cidade: <%= a.city %> </p>
+            <p>Cuidador: <%= a.pet_care %> </p>
+        </div>
+
+    <% end %>
+<% else %>
+    <h2>Não há adoções disponíveis!</h2>
+<% end %>
