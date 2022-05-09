@@ -1,0 +1,31 @@
+<% if @animal.errors.full_messages.any? %>
+    
+    <ul>
+    <% @animal.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+    <% end %>
+    </ul>
+
+<% end %>
+
+
+<%= form_with model: @animal do |f| %>
+
+    <%= f.label :name, "Nome" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :sex, "Sexo" %>
+    <%= f.text_field :sex %>
+
+    <%= f.label :age, "Idade" %>
+    <%= f.text_field :age %>
+
+    <%= f.label :city, "Cidade" %>
+    <%= f.text_field :city %>
+
+    <%= f.label :pet_care, "Cuidador" %>
+    <%= f.text_field :pet_care %>
+
+    <%= f.submit 'Editar adoção' %>
+
+<% end %>
