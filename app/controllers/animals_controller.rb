@@ -14,4 +14,8 @@ class AnimalsController < ApplicationController
             render 'new'
         end
     end
+
+    def show
+        @animal = Animal.find(params[:id])
+    end
 end

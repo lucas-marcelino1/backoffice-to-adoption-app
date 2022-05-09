@@ -21,9 +21,6 @@ describe 'Usuário acessa a tela inicial' do
         visit root_path
         expect(page).not_to have_content('Não há adoções disponíveis!')
         expect(page).to have_content('Nome: Lasanha')
-        expect(page).to have_content('Sexo: Macho')
-        expect(page).to have_content('Idade: 3.0')
-        expect(page).to have_content('Cidade: Blumenau')
         expect(page).to have_content('Cuidador: Oswaldo')
 
     end

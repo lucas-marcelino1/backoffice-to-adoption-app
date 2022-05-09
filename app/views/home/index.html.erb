@@ -7,10 +7,7 @@
     <% @animals.each do |a| %>
 
         <div>
-            <p>Nome: <%= a.name %> </p>
-            <p>Sexo: <%= a.sex %> </p>
-            <p>Idade: <%= a.age %> </p>
-            <p>Cidade: <%= a.city %> </p>
+            <p>Nome: <%= link_to a.name, animal_path(a.id) %> </p>
             <p>Cuidador: <%= a.pet_care %> </p>
         </div>
 

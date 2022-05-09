@@ -25,9 +25,6 @@ describe 'Usuário acessa a página de cadastro' do
         expect(current_path).to eq(root_path)
         expect(page).to have_content('Animal cadastrado para adoção!')
         expect(page).to have_content('Nome: Tunico')
-        expect(page).to have_content('Sexo: Macho')
-        expect(page).to have_content('Idade: 0.8')
-        expect(page).to have_content('Cidade: Blumenau')
         expect(page).to have_content('Cuidador: Júlia')
 
     end
