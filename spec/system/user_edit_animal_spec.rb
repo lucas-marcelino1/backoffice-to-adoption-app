@@ -2,7 +2,7 @@ describe 'Usuário edita o animal cadastrado para adoção' do
 
     it 'a partir da página de caracteristicas' do
 
-        @a = Animal.create(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Blumenau', pet_care: 'Rodrigo')
+        @a = Animal.create!(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Blumenau', pet_care: 'Rodrigo')
 
         visit(root_path)
         click_on('Pecúnia')
@@ -18,7 +18,7 @@ describe 'Usuário edita o animal cadastrado para adoção' do
 
     it 'com sucesso' do
 
-        @a = Animal.create(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Blumenau', pet_care: 'Rodrigo')
+        @a = Animal.create!(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Blumenau', pet_care: 'Rodrigo')
 
         visit(root_path)
         click_on('Pecúnia')
@@ -39,7 +39,7 @@ describe 'Usuário edita o animal cadastrado para adoção' do
 
     it 'com campos inválidos' do
 
-        @a = Animal.create(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Curitibanos', pet_care: 'Rodrigo')
+        @a = Animal.create!(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Curitibanos', pet_care: 'Rodrigo')
 
         visit(root_path)
         click_on('Pecúnia')

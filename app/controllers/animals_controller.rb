@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-    before_action :set_animal, only: [:show, :edit, :update]
+    before_action :set_animal, only: [:show, :edit, :update, :destroy]
 
     def new
         @animal = Animal.new()
@@ -20,6 +20,12 @@ class AnimalsController < ApplicationController
     end
 
     def edit
+    end
+
+    def destroy
+        if @animal.destroy
+            redirect_to(root_path, notice: 'Adoção excluída com sucesso!')
+        end
     end
 
     def update

@@ -10,4 +10,10 @@
     </ul>
 </div>
 
+<div>
+    <%= button_to 'Excluir adoção', animal_path(@animal.id), method: :delete %>
+</div>
+
+<div>
 <%= link_to 'Editar adoção', edit_animal_path(@animal.id) %>
+</div>
