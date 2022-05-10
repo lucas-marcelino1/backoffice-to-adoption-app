@@ -48,6 +48,15 @@ RSpec.describe Animal, type: :model do
       expect(result).to eq(false)
     end
 
+    it 'verdadeiro quando não é passado a adoção' do
+
+      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: 'Rosiberto', city: 'Aranhaguera')
+
+      result = @animal.valid?
+
+      expect(result).to eq(true)
+    end
+
 
 
   end
