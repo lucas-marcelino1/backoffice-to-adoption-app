@@ -5,7 +5,7 @@ describe 'Usuário acessa a página de cadastro' do
     it 'a partir da tela inicial' do
 
         visit(root_path)
-        click_on('Cadastrar animal')
+        click_on('Realizar cadastro de animal')
 
         expect(current_path).to eq(new_animal_path)
 
@@ -14,7 +14,7 @@ describe 'Usuário acessa a página de cadastro' do
     it 'preenche o formulário e cadastra' do
 
         visit(root_path)
-        click_on('Cadastrar animal')
+        click_on('Realizar cadastro de animal')
         fill_in('Nome', with: 'Tunico')
         fill_in('Idade', with: '0.8')
         fill_in('Sexo', with: 'Macho') 
@@ -32,7 +32,7 @@ describe 'Usuário acessa a página de cadastro' do
     it 'preenche campos de forma inválida' do
 
         visit(root_path)
-        click_on('Cadastrar animal')
+        click_on('Realizar cadastro de animal')
         fill_in('Nome', with: '')
         fill_in('Sexo', with: 'Macho')
         fill_in('Cidade', with: '')

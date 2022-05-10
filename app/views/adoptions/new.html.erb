@@ -1,0 +1,24 @@
+<% if @adoption.errors.full_messages.any? %>
+    
+    <ul>
+    <% @adoption.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+    <% end %>
+    </ul>
+
+<% end %>
+
+<%= form_with model: @adoption do |f| %>
+
+    <%= f.label :title, "Título" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :description, "Descrição" %>
+    <%= f.text_field :description %>
+
+    <%= f.label :animal_id, "Animal" %>
+    <%= f.collection_select :animal_id, Animal.all, :id, :name %>
+
+    <%= f.submit 'Cadastrar adoção' %>
+
+<% end %>
