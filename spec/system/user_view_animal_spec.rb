@@ -7,7 +7,7 @@ describe 'Usuário visualiza animal para adoção a partir da tela inicial' do
 
         @animal = Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', pet_care: 'Edilaine')
 
-        visit(root_path)
+        visit(animals_path)
         click_on('Godofreda')
 
         expect(page).to have_content('Nome: Godofreda')
@@ -22,12 +22,12 @@ describe 'Usuário visualiza animal para adoção a partir da tela inicial' do
 
         @animal = Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', pet_care: 'Edilaine')
 
-        visit(root_path)
+        visit(animals_path)
         click_on('Godofreda')
         click_on('Home')
 
-        expect(page).to have_content('Nome: Godofreda')
-        expect(page).to have_content('Cuidador: Edilaine')
+        expect(current_path).to eq(root_path)
+        
     end
 
 

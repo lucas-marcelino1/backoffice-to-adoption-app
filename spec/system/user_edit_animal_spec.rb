@@ -4,7 +4,7 @@ describe 'Usuário edita o animal cadastrado para adoção' do
 
         @a = Animal.create!(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Blumenau', pet_care: 'Rodrigo')
 
-        visit(root_path)
+        visit(animals_path)
         click_on('Pecúnia')
         click_on('Editar adoção')
 
@@ -20,7 +20,7 @@ describe 'Usuário edita o animal cadastrado para adoção' do
 
         @a = Animal.create!(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Blumenau', pet_care: 'Rodrigo')
 
-        visit(root_path)
+        visit(animals_path)
         click_on('Pecúnia')
         click_on('Editar adoção')
         fill_in('Nome', with: 'Dona Pecúnia')
@@ -41,7 +41,7 @@ describe 'Usuário edita o animal cadastrado para adoção' do
 
         @a = Animal.create!(name: 'Pecúnia', sex: 'Macho', age: 2.0, city: 'Curitibanos', pet_care: 'Rodrigo')
 
-        visit(root_path)
+        visit(animals_path)
         click_on('Pecúnia')
         click_on('Editar adoção')
         fill_in('Nome', with: '')

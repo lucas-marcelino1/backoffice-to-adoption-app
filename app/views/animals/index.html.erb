@@ -1,0 +1,17 @@
+<h1> Animais cadastrados </h1>
+
+<%= link_to 'Cadastrar animal', new_animal_path %>
+
+<% if @animals.any? %>
+
+    <% @animals.each do |a| %>
+
+        <div>
+            <p>Nome: <%= link_to a.name, animal_path(a.id) %> </p>
+            <p>Cuidador: <%= a.pet_care %> </p>
+        </div>
+
+    <% end %>
+<% else %>
+    <h2>Não há adoções disponíveis!</h2>
+<% end %>

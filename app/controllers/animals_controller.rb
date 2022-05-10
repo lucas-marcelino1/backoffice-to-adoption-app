@@ -1,6 +1,10 @@
 class AnimalsController < ApplicationController
     before_action :set_animal, only: [:show, :edit, :update, :destroy]
 
+    def index
+        @animals = Animal.all
+    end
+
     def new
         @animal = Animal.new()
     end
@@ -8,7 +12,7 @@ class AnimalsController < ApplicationController
     def create
         @animal = Animal.new(params.require(:animal).permit(:name, :sex, :age, :city, :pet_care))
         if @animal.save
-            redirect_to(root_path, notice: 'Animal cadastrado para adoção!')
+            redirect_to(animals_path, notice: 'Animal cadastrado com sucesso!')
 
         else
             flash.now[:notice] = 'Verifique os erros abaixo'
@@ -24,7 +28,7 @@ class AnimalsController < ApplicationController
 
     def destroy
         if @animal.destroy
-            redirect_to(root_path, notice: 'Adoção excluída com sucesso!')
+            redirect_to(animals_path, notice: 'Animal excluído com sucesso!')
         end
     end
 

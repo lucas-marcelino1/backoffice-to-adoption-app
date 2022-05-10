@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_09_193402) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_10_024835) do
   create_table "adoptions", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "animal_id"
+    t.integer "animal_id", null: false
     t.index ["animal_id"], name: "index_adoptions_on_animal_id"
   end
 

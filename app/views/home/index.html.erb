@@ -1,14 +1,12 @@
 <h1> Adoção de animais online </h1>
 
-<%= link_to 'Cadastrar animal para adoção', new_animal_path %>
+<% if @adoptions.any? %>
 
-<% if @animals.any? %>
-
-    <% @animals.each do |a| %>
+    <% @adoptions.each do |a| %>
 
         <div>
-            <p>Nome: <%= link_to a.name, animal_path(a.id) %> </p>
-            <p>Cuidador: <%= a.pet_care %> </p>
+            <p><%= link_to a.title, adoption_path(a.id) %> </p>
+            <p>Nome:  <%= a.animal.name %> </p>
         </div>
 
     <% end %>
