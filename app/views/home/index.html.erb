@@ -5,8 +5,9 @@
     <% @adoptions.each do |a| %>
 
         <div>
-            <p><%= link_to a.title, adoption_path(a.id) %> </p>
+            <p><%= a.title %> </p>
             <p>Nome: <%= a.animal.name %> </p>
+            <p><%= button_to 'Ver adoção', adoption_path(a.id), {method: :get}%>
         </div>
 
     <% end %>

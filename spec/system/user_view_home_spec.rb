@@ -15,8 +15,8 @@ describe 'Usuário acessa a tela inicial' do
     end
 
     it 'E visualiza todas as adoções de animais disponíveis' do 
-        
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: 'Oswaldo')
+        @pcare = PetCare.create!(name: 'Júlia', age: 21, email: 'juliarezende@gmail.com')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
         @adoption = Adoption.create!(title: 'Doa-se gatinho laranja amigável', description: 'Ele é muito carente, gosta de tá perto sempre e é muito fofinho', animal_id: @a.id)
 
         visit root_path

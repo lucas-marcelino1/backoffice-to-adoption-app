@@ -10,7 +10,7 @@ class AnimalsController < ApplicationController
     end
 
     def create
-        @animal = Animal.new(params.require(:animal).permit(:name, :sex, :age, :city, :pet_care))
+        @animal = Animal.new(params.require(:animal).permit(:name, :sex, :age, :city, :pet_care_id))
         if @animal.save
             redirect_to(animals_path, notice: 'Animal cadastrado com sucesso!')
 
@@ -34,7 +34,7 @@ class AnimalsController < ApplicationController
 
     def update
 
-        if @animal.update(params.require(:animal).permit(:name, :sex, :age, :city, :pet_care))
+        if @animal.update(params.require(:animal).permit(:name, :sex, :age, :city, :pet_care_id))
             redirect_to(animal_path(@animal.id), notice: 'Adoção editada com sucesso')
         else
             flash.now[:notice] = 'Não foi possível realizar a edição'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_10_024835) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_170315) do
   create_table "adoptions", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -25,10 +25,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_024835) do
     t.string "sex"
     t.float "age"
     t.string "city"
-    t.string "pet_care"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "pet_care_id", default: 0, null: false
+    t.index ["pet_care_id"], name: "index_animals_on_pet_care_id"
+  end
+
+  create_table "pet_cares", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "adoptions", "animals"
+  add_foreign_key "animals", "pet_cares"
 end

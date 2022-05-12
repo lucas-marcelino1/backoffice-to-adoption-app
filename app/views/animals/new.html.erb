@@ -23,8 +23,8 @@
 <%= f.label :city, "Cidade" %>
 <%= f.text_field :city %>
 
-<%= f.label :pet_care, "Cuidador" %>
-<%= f.text_field :pet_care %>
+<%= f.label :pet_care_id, "Cuidador" %>
+<%= f.collection_select :pet_care_id, PetCare.all, :id, :name %>
 
 <%= f.submit 'Cadastrar animal' %>
 

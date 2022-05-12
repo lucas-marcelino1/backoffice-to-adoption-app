@@ -4,8 +4,8 @@ RSpec.describe Animal, type: :model do
   describe 'valid?' do
 
     it 'falso quando o nome está vazio' do
-
-        @animal = Animal.new(name: '', sex: 'Macho', age: 0.8, pet_care: 'Rosiberto', city: 'Aranhaguera')
+        @pcare = PetCare.create!(name: 'Júlia', age: '21', email: 'juliarezende@gmail.com')
+        @animal = Animal.new(name: '', sex: 'Macho', age: 0.8, pet_care: @pcare, city: 'Aranhaguera')
 
         result = @animal.valid?
 
@@ -14,7 +14,8 @@ RSpec.describe Animal, type: :model do
 
     it 'falso quando o sexo está vazio' do
 
-      @animal = Animal.new(name: 'Tatuina', sex: '', age: 0.8, pet_care: 'Rosiberto', city: 'Aranhaguera')
+      @pcare = PetCare.create!(name: 'Júlia', age: '21', email: 'juliarezende@gmail.com')
+      @animal = Animal.new(name: 'Tatuina', sex: '', age: 0.8, pet_care: @pcare, city: 'Aranhaguera')
 
       result = @animal.valid?
 
@@ -22,17 +23,17 @@ RSpec.describe Animal, type: :model do
     end
 
     it 'falso quando a idade está vazia' do
-
-      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: '', pet_care: 'Rosiberto', city: 'Aranhaguera')
+      @pcare = PetCare.create!(name: 'Júlia', age: '21', email: 'juliarezende@gmail.com')
+      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: '', pet_care: @pcare, city: 'Aranhaguera')
 
       result = @animal.valid?
 
       expect(result).to eq(false)
     end
 
-    it 'falso quando o cuidador está vazio' do
+    it 'falso quando o cuidador não existe' do
 
-      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: '', city: 'Aranhaguera')
+      @animal = Animal.create(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: @pcare, city: 'Aranhaguera')
 
       result = @animal.valid?
 
@@ -40,8 +41,8 @@ RSpec.describe Animal, type: :model do
     end
 
     it 'falso quando a cidade está vazia' do
-
-      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: 'Rosiberto', city: '')
+      @pcare = PetCare.create!(name: 'Júlia', age: '21', email: 'juliarezende@gmail.com')
+      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: @pcare, city: '')
 
       result = @animal.valid?
 
@@ -49,8 +50,8 @@ RSpec.describe Animal, type: :model do
     end
 
     it 'verdadeiro quando não é passado a adoção' do
-
-      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: 'Rosiberto', city: 'Aranhaguera')
+      @pcare = PetCare.create!(name: 'Júlia', age: '21', email: 'juliarezende@gmail.com')
+      @animal = Animal.new(name: 'Tatuina', sex: 'Macho', age: 0.8, pet_care: @pcare, city: 'Aranhaguera')
 
       result = @animal.valid?
 

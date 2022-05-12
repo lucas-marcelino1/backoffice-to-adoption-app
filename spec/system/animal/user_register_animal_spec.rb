@@ -12,6 +12,7 @@ describe 'Usuário acessa a página de cadastro' do
     end
 
     it 'preenche o formulário e cadastra' do
+        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
 
         visit(root_path)
         click_on('Realizar cadastro de animal')
@@ -19,17 +20,19 @@ describe 'Usuário acessa a página de cadastro' do
         fill_in('Idade', with: '0.8')
         fill_in('Sexo', with: 'Macho') 
         fill_in('Cidade', with: 'Blumenau') 
-        fill_in('Cuidador', with: 'Júlia')
+        select('Oswaldo', from: 'Cuidador')
         click_on('Cadastrar animal')
         
         expect(current_path).to eq(animals_path)
         expect(page).to have_content('Animal cadastrado com sucesso!')
         expect(page).to have_content('Nome: Tunico')
-        expect(page).to have_content('Cuidador: Júlia')
+        expect(page).to have_content('Cuidador: Oswaldo')
+      
 
     end
 
     it 'preenche campos de forma inválida' do
+        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
 
         visit(root_path)
         click_on('Realizar cadastro de animal')
@@ -37,7 +40,7 @@ describe 'Usuário acessa a página de cadastro' do
         fill_in('Sexo', with: 'Macho')
         fill_in('Cidade', with: '')
         fill_in('Idade', with: '3')
-        fill_in('Cuidador', with: 'Lucas')
+        select('Oswaldo', from: 'Cuidador')
         click_on('Cadastrar animal')
 
         expect(page).to have_content("Name can't be blank")

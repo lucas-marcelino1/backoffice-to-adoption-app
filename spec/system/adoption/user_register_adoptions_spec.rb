@@ -4,7 +4,7 @@ describe 'Usuário acessa o registro de adoções' do
 
     it 'a partir da tela inicial' do
         visit(root_path)
-        click_on('Realizar adoção de animal')
+        click_on('Cadastrar animal para adoção')
 
         expect(page).to have_field('Título')
         expect(page).to have_field('Descrição')
@@ -12,11 +12,11 @@ describe 'Usuário acessa o registro de adoções' do
     end
 
     it 'e cadastra adoção com sucesso' do
-
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: 'Oswaldo')
+        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
 
         visit(root_path)
-        click_on('Realizar adoção de animal')
+        click_on('Cadastrar animal para adoção')
         fill_in('Título', with: 'Doa-se gatinho laranja')
         fill_in('Descrição', with: 'Ele é muito carente e adora estar perto')
         select('Lasanha', from: 'Animal')
@@ -32,10 +32,11 @@ describe 'Usuário acessa o registro de adoções' do
 
     it 'e falha ao cadastrar adoção com campos inválidos' do
 
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: 'Oswaldo')
-
+        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
+        
         visit(root_path)
-        click_on('Realizar adoção de animal')
+        click_on('Cadastrar animal para adoção')
         fill_in('Título', with: '')
         fill_in('Descrição', with: 'Ele é muito carente e adora estar perto')
         select('Lasanha', from: 'Animal')
