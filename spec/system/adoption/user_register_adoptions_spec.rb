@@ -12,9 +12,11 @@ describe 'Usuário acessa o registro de adoções' do
     end
 
     it 'e cadastra adoção com sucesso' do
-        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
 
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
+
+        login_as(@user, :scope => :user_pet_care)
         visit(root_path)
         click_on('Cadastrar animal para adoção')
         fill_in('Título', with: 'Doa-se gatinho laranja')
@@ -32,9 +34,10 @@ describe 'Usuário acessa o registro de adoções' do
 
     it 'e falha ao cadastrar adoção com campos inválidos' do
 
-        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
-        
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
+
+        login_as(@user, :scope => :user_pet_care)
         visit(root_path)
         click_on('Cadastrar animal para adoção')
         fill_in('Título', with: '')

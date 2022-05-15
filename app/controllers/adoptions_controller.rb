@@ -2,10 +2,12 @@ class AdoptionsController < ApplicationController
 
     def new
         @adoption = Adoption.new
+        @user = current_user_pet_care
     end
 
     def create
-        @adoption = Adoption.new(params.require(:adoption).permit(:title, :description, :animal_id))
+        @user = current_user_pet_care
+        @adoption = Adoption.new(params.require(:adoption).permit(:title, :description, :animal_id).merge(user_pet_care_id: @user.id))
         if @adoption.save
             redirect_to root_path, notice: 'Adoção cadastrada com sucesso'
         else

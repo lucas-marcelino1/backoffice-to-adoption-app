@@ -4,8 +4,8 @@ require 'rails_helper'
 describe 'Usuário visualiza animal para adoção a partir da tela inicial' do 
 
     it 'e visualiza os detalhes da adoção' do
-        @pcare = PetCare.create!(name: 'Júlia', age: 21, email: 'juliarezende@gmail.com')
-        @animal = Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', pet_care: @pcare)
+        @user = UserPetCare.create!(name: 'Júlia', city: 'Blumenau', email: 'julia@gmail.com', password: '123456')
+        @animal = Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', user_pet_care: @user)
 
         visit(animals_path)
         click_on('Godofreda')
@@ -20,8 +20,8 @@ describe 'Usuário visualiza animal para adoção a partir da tela inicial' do
 
     it 'visualiza os detalhes da adoção e retorna para o menu principal' do
 
-        @pcare = PetCare.create!(name: 'Júlia', age: 21, email: 'juliarezende@gmail.com')
-        @animal = Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', pet_care: @pcare)
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+        @animal = Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', user_pet_care: @user)
         visit(animals_path)
         click_on('Godofreda')
         click_on('Home')

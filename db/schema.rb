@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_044512) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_133410) do
   create_table "adoptions", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "animal_id", null: false
+    t.integer "user_pet_care_id", null: false
     t.index ["animal_id"], name: "index_adoptions_on_animal_id"
+    t.index ["user_pet_care_id"], name: "index_adoptions_on_user_pet_care_id"
   end
 
   create_table "animals", force: :cascade do |t|
@@ -27,8 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_044512) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pet_care_id", default: 0, null: false
-    t.index ["pet_care_id"], name: "index_animals_on_pet_care_id"
+    t.integer "user_pet_care_id", default: 0, null: false
+    t.index ["user_pet_care_id"], name: "index_animals_on_user_pet_care_id"
   end
 
   create_table "pet_cares", force: :cascade do |t|
@@ -54,5 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_044512) do
   end
 
   add_foreign_key "adoptions", "animals"
-  add_foreign_key "animals", "pet_cares"
+  add_foreign_key "adoptions", "user_pet_cares"
+  add_foreign_key "animals", "user_pet_cares"
 end

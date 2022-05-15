@@ -6,7 +6,7 @@
 
         <div>
             <p>Nome: <%= link_to a.name, animal_path(a.id) %> </p>
-            <p>Cuidador: <%= a.pet_care.name %> </p>
+            <p>Cuidador: <%= a.user_pet_care.name %> </p>
         </div>
 
     <% end %>

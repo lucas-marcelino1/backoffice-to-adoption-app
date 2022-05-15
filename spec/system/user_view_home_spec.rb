@@ -15,9 +15,9 @@ describe 'Usuário acessa a tela inicial' do
     end
 
     it 'E visualiza todas as adoções de animais disponíveis' do 
-        @pcare = PetCare.create!(name: 'Júlia', age: 21, email: 'juliarezende@gmail.com')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
-        @adoption = Adoption.create!(title: 'Doa-se gatinho laranja amigável', description: 'Ele é muito carente, gosta de tá perto sempre e é muito fofinho', animal_id: @a.id)
+        @user = UserPetCare.create!(name: 'Júlia', city: 'Blumenau', email: 'julia@gmail.com', password: '123456')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
+        @adoption = Adoption.create!(title: 'Doa-se gatinho laranja amigável', description: 'Ele é muito carente, gosta de tá perto sempre e é muito fofinho', animal: @a, user_pet_care: @user )
 
         visit root_path
         expect(page).not_to have_content('Não há adoções disponíveis!')

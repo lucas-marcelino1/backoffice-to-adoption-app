@@ -4,8 +4,8 @@ describe 'Usuário deleta animal' do
 
     it 'a partir da tela de detalhes' do
 
-        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
 
         visit(animals_path)
         click_on('Lasanha')
@@ -19,9 +19,9 @@ describe 'Usuário deleta animal' do
 
     it 'e somente o animal selecionado' do
 
-        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', pet_care: @pcare)
-        @animal_second = Animal.create!(name: 'Ruby', sex: 'Fêmea', age: '12', city: 'Curitiba', pet_care: @pcare)
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
+        @animal_second = Animal.create!(name: 'Ruby', sex: 'Fêmea', age: '12', city: 'Curitiba', user_pet_care: @user)
 
         visit(animals_path)
         click_on('Lasanha')

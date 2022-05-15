@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário acessa a página de cadastro' do 
+describe 'Usuário acessa a página de cadastro de animal' do 
 
     it 'a partir da tela inicial' do
 
@@ -12,15 +12,15 @@ describe 'Usuário acessa a página de cadastro' do
     end
 
     it 'preenche o formulário e cadastra' do
-        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
 
+        login_as(@user, :scope => :user_pet_care)
         visit(root_path)
         click_on('Realizar cadastro de animal')
         fill_in('Nome', with: 'Tunico')
         fill_in('Idade', with: '0.8')
         fill_in('Sexo', with: 'Macho') 
         fill_in('Cidade', with: 'Blumenau') 
-        select('Oswaldo', from: 'Cuidador')
         click_on('Cadastrar animal')
         
         expect(current_path).to eq(animals_path)
@@ -32,15 +32,15 @@ describe 'Usuário acessa a página de cadastro' do
     end
 
     it 'preenche campos de forma inválida' do
-        @pcare = PetCare.create!(name: 'Oswaldo', age: '21', email: 'oswaldo@gmail.com')
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
 
+        login_as(@user, :scope => :user_pet_care)
         visit(root_path)
         click_on('Realizar cadastro de animal')
         fill_in('Nome', with: '')
         fill_in('Sexo', with: 'Macho')
         fill_in('Cidade', with: '')
         fill_in('Idade', with: '3')
-        select('Oswaldo', from: 'Cuidador')
         click_on('Cadastrar animal')
 
         expect(page).to have_content("Nome não pode ficar em branco")
