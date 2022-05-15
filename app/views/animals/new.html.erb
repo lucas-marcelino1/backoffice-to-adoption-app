@@ -11,19 +11,19 @@
 
 <%= form_with model: @animal do |f| %>
 
-<%= f.label :name, "Nome" %>
+<%= f.label :name %>
 <%= f.text_field :name %>
 
-<%= f.label :sex, "Sexo" %>
+<%= f.label :sex %>
 <%= f.text_field :sex %>
 
-<%= f.label :age, "Idade" %>
+<%= f.label :age %>
 <%= f.text_field :age %>
 
-<%= f.label :city, "Cidade" %>
+<%= f.label :city %>
 <%= f.text_field :city %>
 
-<%= f.label :pet_care_id, "Cuidador" %>
+<%= f.label :pet_care_id %>
 <%= f.collection_select :pet_care_id, PetCare.all, :id, :name %>
 
 <%= f.submit 'Cadastrar animal' %>

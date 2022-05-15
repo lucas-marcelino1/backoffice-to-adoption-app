@@ -43,8 +43,8 @@ describe 'Usuário acessa a página de cadastro' do
         select('Oswaldo', from: 'Cuidador')
         click_on('Cadastrar animal')
 
-        expect(page).to have_content("Name can't be blank")
-        expect(page).to have_content("City can't be blank")
+        expect(page).to have_content("Nome não pode ficar em branco")
+        expect(page).to have_content("Cidade não pode ficar em branco")
 
 
     end

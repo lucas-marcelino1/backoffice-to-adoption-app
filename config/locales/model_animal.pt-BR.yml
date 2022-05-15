@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      animal: 'Animal'
+    attributes:
+      animal:
+        name: "Nome"
+        sex: "Sexo"
+        address: "Endereço"
+        age: "Idade"
+        city: "Cidade"
+        pet_care_id: "Cuidador"
+        
