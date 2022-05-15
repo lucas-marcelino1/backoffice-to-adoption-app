@@ -22,6 +22,15 @@
       <%= link_to 'Cadastrar animal para adoção', new_adoption_path %>
     </div>
 
+    <% if user_pet_care_signed_in? %>
+      Olá <%= current_user_pet_care.name %>
+      <%= button_to 'Sair', destroy_user_pet_care_session_path, method: :delete%>
+    <% else %>
+    <div>
+      <%= link_to 'Entrar', new_user_pet_care_session_path %>
+    </div>
+    <% end %>
+
     <br>
 
     <div>

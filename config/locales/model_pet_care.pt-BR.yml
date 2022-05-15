@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      user_pet_care: 'Cuidador'
+    attributes:
+      user_pet_care:
+        name: "Nome"
+        city: "Cidade"
+        email: "E-mail"
+        password: "Senha"
+        
