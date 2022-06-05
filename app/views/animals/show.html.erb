@@ -1,19 +1,20 @@
-<h1>Visualizando adoção de <% @animal.name %> </h1>
+<h1>Visualizando <% @animal.name %> </h1>
 
 <div>
     <ul>
-        <li>Nome: </li><%=@animal.name%>
-        <li>Sexo: </li><%=@animal.sex%>
-        <li>Idade: </li><%=@animal.age%>
-        <li>Cidade: </li><%=@animal.city%>
-        <li>Cuidador: </li><%=@animal.user_pet_care.name%>
+        <li>Nome: <%=@animal.name%></li>
+        <li>Sexo: <%=@animal.sex%></li>
+        <li>Idade: <%=@animal.age%></li>
+        <li>Tipo de animal: <%=@animal.animal_type%></li>
+        <li>Cidade: <%=@animal.city%></li>
+        <li>Cuidador: <%=@animal.user_pet_care.name%></li>
     </ul>
 </div>
 
 <div>
-    <%= button_to 'Excluir adoção', animal_path(@animal.id), method: :delete %>
+    <%= button_to 'Excluir animal', animal_path(@animal.id), method: :delete %>
 </div>
 
 <div>
-<%= link_to 'Editar adoção', edit_animal_path(@animal.id) %>
+<%= link_to 'Editar animal', edit_animal_path(@animal.id) %>
 </div>

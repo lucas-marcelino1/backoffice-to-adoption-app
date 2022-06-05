@@ -9,5 +9,6 @@ pt-BR:
         address: "Endereço"
         age: "Idade"
         city: "Cidade"
-        pet_care_id: "Cuidador"
+        user_pet_care_id: "Cuidador"
+        animal_type: 'Tipo de animal'
         

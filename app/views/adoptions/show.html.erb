@@ -1,2 +1,13 @@
 <h1>Visualizando adoção de <%= @adoption.animal.name %> </h1>
 
+<div>
+  <h3> <%= @adoption.title %> </h3>
+  <p> <%= @adoption.description %> </p>
+  <p><%=Animal.human_attribute_name(:name)%>: <%= @adoption.animal.name %> </p>
+  <p> <%= @adoption.animal.sex %> </p>
+  <p> <%= @adoption.animal.animal_type %> </p>
+  <p> <%= @adoption.animal.age %> anos</p>
+  <p>Cuidador: <%= @adoption.user_pet_care.name %> < <%= @adoption.user_pet_care.email %> > - <%= @adoption.user_pet_care.city %></p>
+</div>
+
+<%= button_to 'Cancelar adoção', adoption_path(@adoption), method: :delete %>

@@ -5,11 +5,11 @@
     <% @animals.each do |a| %>
 
         <div>
-            <p>Nome: <%= link_to a.name, animal_path(a.id) %> </p>
-            <p>Cuidador: <%= a.user_pet_care.name %> </p>
+            <p><%= link_to a.name, animal_path(a.id) %> - <%= a.animal_type %> </p>
+            
         </div>
 
     <% end %>
 <% else %>
-    <h2>Não há adoções disponíveis!</h2>
+    <h2>Não há animais cadastrados!</h2>
 <% end %>

@@ -12,14 +12,14 @@ RSpec.describe Animal, type: :model do
         expect(result).to eq(false)
     end
 
-    it 'falso quando o sexo está vazio' do
+    it 'verdadeiro quando o sexo está vazio' do
 
       @user = UserPetCare.create!(name: 'Júlia', city: 'Blumenau', email: 'julia@gmail.com', password: '123456')
       @animal = Animal.create(name: 'Tunico', sex: '', city: 'Blumenau', user_pet_care: @user, age: '0.8')
 
       result = @animal.valid?
 
-      expect(result).to eq(false)
+      expect(result).to eq(true)
     end
 
     it 'falso quando a idade está vazia' do

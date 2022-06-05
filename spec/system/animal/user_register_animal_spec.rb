@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-describe 'Usuário acessa a página de cadastro de animal' do 
+describe 'Usuário acessa a página de cadastro de animal', js: true do 
 
     it 'a partir da tela inicial' do
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
 
+        login_as(@user)
         visit(root_path)
         click_on('Realizar cadastro de animal')
 
@@ -18,15 +20,14 @@ describe 'Usuário acessa a página de cadastro de animal' do
         visit(root_path)
         click_on('Realizar cadastro de animal')
         fill_in('Nome', with: 'Tunico')
+        fill_in('Tipo de animal', with: 'Gato')
         fill_in('Idade', with: '0.8')
-        fill_in('Sexo', with: 'Macho') 
         fill_in('Cidade', with: 'Blumenau') 
         click_on('Cadastrar animal')
         
         expect(current_path).to eq(animals_path)
         expect(page).to have_content('Animal cadastrado com sucesso!')
-        expect(page).to have_content('Nome: Tunico')
-        expect(page).to have_content('Cuidador: Oswaldo')
+        expect(page).to have_content('Tunico - Gato')
       
 
     end
@@ -38,7 +39,7 @@ describe 'Usuário acessa a página de cadastro de animal' do
         visit(root_path)
         click_on('Realizar cadastro de animal')
         fill_in('Nome', with: '')
-        fill_in('Sexo', with: 'Macho')
+        find('label', text: 'Macho').click
         fill_in('Cidade', with: '')
         fill_in('Idade', with: '3')
         click_on('Cadastrar animal')

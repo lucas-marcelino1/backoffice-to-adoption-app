@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      adoption: 'Adoção'
+    attributes:
+      adoption:
+        title: "Título"
+        description: "Descrição"
+        user_pet_care_id: "Cuidador"
+        animal_id: "Animal"
+        

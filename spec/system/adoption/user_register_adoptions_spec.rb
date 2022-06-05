@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'Usuário acessa o registro de adoções' do
 
     it 'a partir da tela inicial' do
+        @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+
+        login_as(@user, :scope => :user_pet_care)
         visit(root_path)
         click_on('Cadastrar animal para adoção')
 
@@ -35,7 +38,7 @@ describe 'Usuário acessa o registro de adoções' do
     it 'e falha ao cadastrar adoção com campos inválidos' do
 
         @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
+        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user, animal_type: 'Gato')
 
         login_as(@user, :scope => :user_pet_care)
         visit(root_path)

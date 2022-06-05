@@ -10,14 +10,14 @@
 
 <%= form_with model: @adoption do |f| %>
 
-    <%= f.label :title, "Título" %>
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %> <br>
 
-    <%= f.label :description, "Descrição" %>
-    <%= f.text_field :description %>
+    <%= f.label :description %>
+    <%= f.text_area :description %> <br>
 
-    <%= f.label :animal_id, "Animal" %>
-    <%= f.collection_select :animal_id, Animal.all, :id, :name %>
+    <%= f.label :animal_id %>
+    <%= f.collection_select :animal_id, @animals, :id, :name %> <br>
 
     <%= f.submit 'Cadastrar adoção' %>
 

@@ -1,4 +1,6 @@
 pt-BR:
+  female: 'Fêmea'
+  male: 'Macho'
   activerecord:
     errors:
       messages:

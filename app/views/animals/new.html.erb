@@ -11,18 +11,24 @@
 
 <%= form_with model: @animal do |f| %>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br>
 
-<%= f.label :sex %>
-<%= f.text_field :sex %>
+    <%= f.radio_button(:sex, I18n.t(:male)) %> 
+    <%= f.label(:sex, I18n.t(:male)) %>
 
-<%= f.label :age %>
-<%= f.text_field :age %>
+    <%= f.radio_button(:sex, I18n.t(:female)) %>
+    <%= f.label(:sex, I18n.t(:female)) %> <br>
 
-<%= f.label :city %>
-<%= f.text_field :city %>
+    <%= f.label :age %>
+    <%= f.text_field :age %> <br>
 
-<%= f.submit 'Cadastrar animal' %>
+    <%= f.label :animal_type %>
+    <%= f.text_field :animal_type %> <br>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %> <br>
+
+    <%= f.submit 'Cadastrar animal' %>
 
 <% end %>
