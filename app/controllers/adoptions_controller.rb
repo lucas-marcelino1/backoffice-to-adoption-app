@@ -8,11 +8,15 @@ class AdoptionsController < ApplicationController
         @animals = @user.animals
     end
 
+    def index
+        @adoptions = current_user_pet_care.adoptions
+    end
+
     def create
         @user = current_user_pet_care
         @adoption = Adoption.new(params.require(:adoption).permit(:title, :description, :animal_id).merge(user_pet_care_id: @user.id))
         if @adoption.save
-            redirect_to root_path, notice: 'Adoção cadastrada com sucesso!'
+            redirect_to adoptions_path, notice: 'Adoção cadastrada com sucesso!'
         else
             flash.now[:notice] = 'Adoção falhou!'
             @animals = @user.animals

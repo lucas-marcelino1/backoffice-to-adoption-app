@@ -1,16 +1,18 @@
-<h1> Adoção de animais online </h1>
+<h1> Me adota - Cadastro de animais para adoção online </h1>
 
-<% if @adoptions.any? %>
+<div>
+    <%= link_to 'Minhas adoções', adoptions_path %>
+</div>
 
-    <% @adoptions.each do |a| %>
+<div>
+  <%= link_to 'Meus animais cadastrados', animals_path %>
+</div>
 
-        <div>
-            <p><%= a.title %> </p>
-            <p>Nome: <%= a.animal.name %> </p>
-            <p><%= button_to 'Ver adoção', adoption_path(a.id), {method: :get}%>
-        </div>
+<div>
+  <%= link_to 'Realizar cadastro de animal', new_animal_path %>
+</div>
 
-    <% end %>
-<% else %>
-    <h2>Não há adoções disponíveis!</h2>
-<% end %>
+<div>
+  <%= link_to 'Cadastrar animal para adoção', new_adoption_path %>
+</div>
+

@@ -27,7 +27,7 @@ describe 'Usuário acessa o registro de adoções' do
         select('Lasanha', from: 'Animal')
         click_on('Cadastrar adoção')
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq(adoptions_path)
         expect(page).to have_content('Adoção cadastrada com sucesso')
         expect(page).to have_content('Doa-se gatinho laranja')
         expect(page).to have_content('Nome: Lasanha')

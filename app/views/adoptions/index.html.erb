@@ -1,0 +1,8 @@
+<h2> Minhas adoções <h2>
+
+<div>
+  <% @adoptions.each do |adoption| %>
+    <%= link_to adoption.title, adoption_path(adoption)%>
+    Nome: <%= adoption.animal.name %>
+  <% end %>
+</div>

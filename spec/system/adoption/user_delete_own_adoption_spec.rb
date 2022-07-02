@@ -10,7 +10,8 @@ describe 'Usuário deleta sua própria adoção' do
 
     login_as(@user, :scope => :user_pet_care)
     visit root_path
-    click_on('Ver adoção')
+    click_on('Minhas adoções')
+    click_on('Doa-se gatinho laranja amigável')
     click_on('Cancelar adoção')
 
     expect(current_path).to eq(root_path)

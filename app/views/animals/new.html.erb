@@ -21,10 +21,10 @@
     <%= f.label(:sex, I18n.t(:female)) %> <br>
 
     <%= f.label :age %>
-    <%= f.text_field :age %> <br>
+    <%= f.number_field :age, step: :any %> <br>
 
     <%= f.label :animal_type %>
-    <%= f.text_field :animal_type %> <br>
+    <%= f.collection_select :animal_type, ['Gato', 'Cachorro', 'Porco', 'Pássaro', 'Hamster', 'Capivara'], :to_s, :to_s  %> <br>
 
     <%= f.label :city %>
     <%= f.text_field :city %> <br>

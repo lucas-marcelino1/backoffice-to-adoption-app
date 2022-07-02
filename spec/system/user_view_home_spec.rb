@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário acessa a tela inicial' do 
 
-    it 'E visualiza Adoção de animais online' do
+    it 'E visualiza Me adota - Cadastro de animais para adoção online' do
 
         #Arrange
 
@@ -10,32 +10,20 @@ describe 'Usuário acessa a tela inicial' do
         visit(root_path)
 
         #Assert
-        expect(page).to have_content("Adoção de animais online")
+        expect(page).to have_content("Me adota - Cadastro de animais para adoção online")
 
     end
 
-    it 'E visualiza todas as adoções de animais disponíveis' do 
+    it 'E visualiza todas as ações e links disponíveis' do 
         @user = UserPetCare.create!(name: 'Júlia', city: 'Blumenau', email: 'julia@gmail.com', password: '123456')
-        @a = Animal.create!(name: 'Lasanha', sex: 'Macho', age: 3.0, city: 'Blumenau', user_pet_care: @user)
-        @adoption = Adoption.create!(title: 'Doa-se gatinho laranja amigável', description: 'Ele é muito carente, gosta de tá perto sempre e é muito fofinho', animal: @a, user_pet_care: @user )
-
+    
+        login_as(@user, :scope => :user_pet_care)
         visit root_path
-        expect(page).not_to have_content('Não há adoções disponíveis!')
-        expect(page).to have_content('Doa-se gatinho laranja amigável')
-        expect(page).to have_content('Lasanha')
-
+        expect(page).to have_content('Minhas adoções')
+        expect(page).to have_content('Meus animais cadastrados')
+        expect(page).to have_content('Realizar cadastro de animal')
+        expect(page).to have_content('Cadastrar animal para adoção')
 
     end
-
-    it 'E visualiza a mensagem não há adoções disponíveis' do 
-
-        visit root_path
-
-        expect(page).to have_content('Não há adoções disponíveis!')
-
-    end
-
-   
-
 
 end

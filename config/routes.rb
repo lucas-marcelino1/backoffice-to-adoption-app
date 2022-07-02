@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "home#index"
   resources :animals
-  resources :adoptions, only: [:show, :new, :create, :destroy]
+  resources :adoptions, only: [:index, :show, :new, :create, :destroy]
 
   namespace :api do
     namespace :v1 do
