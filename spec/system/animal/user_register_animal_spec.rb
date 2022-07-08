@@ -20,7 +20,7 @@ describe 'Usuário acessa a página de cadastro de animal', js: true do
         visit(root_path)
         click_on('Realizar cadastro de animal')
         fill_in('Nome', with: 'Tunico')
-        fill_in('Tipo de animal', with: 'Gato')
+        select('Gato', from: 'Tipo de animal')
         fill_in('Idade', with: '0.8')
         fill_in('Cidade', with: 'Blumenau') 
         click_on('Cadastrar animal')
