@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :animals, only: [:show, :index, :create]
-      resources :adoptions, only: [:index, :show]
+      resources :adoptions, only: [:index, :show] do
+        patch 'adopt', on: :member
+      end
     end
   end
 end

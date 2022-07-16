@@ -25,5 +25,4 @@ describe 'Usuário acessa a tela inicial' do
         expect(page).to have_content('Cadastrar animal para adoção')
 
     end
-
 end
