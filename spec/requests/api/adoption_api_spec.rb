@@ -42,4 +42,21 @@ describe 'Adoption API' do
       expect(json_response['animal_name']).to eq('Josias')
     end
   end
+
+  context 'PATCH /api/v1/animals/1/adopt' do
+    it 'successfuly' do
+      @user = UserPetCare.create!(name: 'Oswaldo', city: 'Blumenau', email: 'oswaldo@gmail.com', password: '123456')
+      Animal.create!(name: 'Godofreda', sex: 'Fêmea', age: '3', city: 'Concórdia', animal_type: 'Cachorro', user_pet_care: @user)
+      Adoption.create!(title: 'Adote um cachorro', description: 'Cachorro abandonado', animal: Animal.last, user_pet_care: UserPetCare.last)
+
+      patch('/api/v1/adoptions/1/adopt')
+
+      expect(response.status).to eq(200)
+      expect(response.content_type).to include('application/json')
+      json_response = JSON.parse(response.body)
+      expect(json_response["message"]).to eq("Animal adotado com sucesso! Esperamos que você e Godofreda sejam muito felizes.")
+
+    end
+  end
+  
 end
