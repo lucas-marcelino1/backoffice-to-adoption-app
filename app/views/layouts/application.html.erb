@@ -6,30 +6,42 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <div>
-      <%= link_to 'Home', root_path %>
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4 border-bottom">
+       <a class="navbar-brand ms-2" href="<%= root_path %>">
+          <%= image_tag 'dog-cat.svg', height: 50, width: 70 %>
+          <h2 class="d-inline p-2 mt-5"> Me adota ai</h2>
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 me-5">
+          <li>Cadastro de animais para adoção online</li>
+        </ul>
+
+        <div class="col-md3 text-end me-4">
+          <% if user_pet_care_signed_in? %>
+              Olá, <%= current_user_pet_care.name %>
+              <%= button_to 'Sair', destroy_user_pet_care_session_path, method: :delete, class: "btn btn-danger mt-2" %>
+          <% else %>
+            <div>
+              <%= link_to 'Login', new_user_pet_care_session_path, class: "btn btn-outline-primary"%>
+              <%= link_to 'Registre-se', new_user_pet_care_registration_path, class: "btn btn-primary"%>
+            </div>
+          <% end %>
+        </div>
+      </header>
     </div>
-
-    <% if user_pet_care_signed_in? %>
-      <div>
-        Olá <%= current_user_pet_care.name %>
-        <%= button_to 'Sair', destroy_user_pet_care_session_path, method: :delete%>
-      </div>
-    <% else %>
-      <div>
-        <%= link_to 'Entrar', new_user_pet_care_session_path %>
-      </div>
-    <% end %>
-
-    <br>
+    
 
     <div>
-      <%= notice %>
+      <div>
+        <%= notice %>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
