@@ -11,4 +11,5 @@ pt-BR:
         city: "Cidade"
         user_pet_care_id: "Cuidador"
         animal_type: 'Tipo de animal'
+        image: 'Imagem do animal'
         
