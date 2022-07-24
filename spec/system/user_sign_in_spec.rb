@@ -5,7 +5,7 @@ describe 'Usuário realiza login' do
         UserPetCare.create!(name: 'Lucas', city: 'Blumenau', email: 'lucas@email.com', password: '123456')
 
         visit(root_path)
-        click_on('Entrar')
+        click_on('Log in')
         within 'form' do 
             fill_in('E-mail', with: 'lucas@email.com')
             fill_in('Senha', with: '123456')
@@ -19,7 +19,7 @@ describe 'Usuário realiza login' do
         UserPetCare.create!(name: 'Lucas', city: 'Blumenau', email: 'lucas@email.com', password: '123456')
 
         visit(root_path)
-        click_on('Entrar')
+        click_on('Log in')
         within 'form' do 
             fill_in('E-mail', with: 'lucas@email.com')
             fill_in('Senha', with: '123456')
@@ -29,7 +29,7 @@ describe 'Usuário realiza login' do
 
         expect(current_path).to eq(root_path)
         expect(page).not_to have_button('Sair')
-        expect(page).to have_link('Entrar')
+        expect(page).to have_link('Log in')
 
     end
 end

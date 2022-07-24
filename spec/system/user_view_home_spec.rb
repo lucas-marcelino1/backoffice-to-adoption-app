@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário acessa a tela inicial' do 
 
-    it 'E visualiza Me adota - Cadastro de animais para adoção online' do
+    it 'E visualiza Me adota Cadastro de animais para adoção online' do
 
         #Arrange
 
@@ -10,7 +10,8 @@ describe 'Usuário acessa a tela inicial' do
         visit(root_path)
 
         #Assert
-        expect(page).to have_content("Me adota - Cadastro de animais para adoção online")
+        expect(page).to have_content("Me adota")
+        expect(page).to have_content("Cadastro de animais para adoção online")
 
     end
 

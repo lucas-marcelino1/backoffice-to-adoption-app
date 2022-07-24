@@ -4,8 +4,7 @@ describe 'Usuário se cadastra' do
 
     it 'com sucesso' do
         visit(root_path)
-        click_on('Entrar')
-        click_on('Cadastrar nova conta')
+        click_on('Registre-se')
         fill_in('Nome', with: 'Nova Conta')
         fill_in('Cidade', with: 'Contaville')
         fill_in('E-mail', with: 'novaconta@gmail.com')
