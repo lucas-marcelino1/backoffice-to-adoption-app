@@ -23,6 +23,7 @@ describe 'Usuário acessa a página de cadastro de animal', js: true do
         select('Gato', from: 'Tipo de animal')
         fill_in('Idade', with: '0.8')
         fill_in('Cidade', with: 'Blumenau') 
+        attach_file("Imagem do animal", Rails.root.join("spec/support/images/joaninha.jpg"))
         click_on('Cadastrar animal')
         
         expect(current_path).to eq(animals_path)

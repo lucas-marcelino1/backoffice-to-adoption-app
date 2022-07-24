@@ -29,6 +29,15 @@
     <%= f.label :city %>
     <%= f.text_field :city %> <br>
 
+    <div class="form-group">
+        <% if @animal.image.attached? %>
+            <%= image_tag @animal.image, style: "width: 200px; display: block"%>
+        <% end %>
+
+        <%= f.label :image %>
+        <%= f.file_field :image, class: "form-control"%>
+    </div>
+
     <%= f.submit 'Cadastrar animal' %>
 
 <% end %>

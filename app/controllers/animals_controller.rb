@@ -14,7 +14,7 @@ class AnimalsController < ApplicationController
 
     def create
         @user = current_user_pet_care
-        @animal = Animal.new(params.require(:animal).permit(:name, :sex, :age, :city, :animal_type).merge(user_pet_care_id: @user.id))
+        @animal = Animal.new(params.require(:animal).permit(:name, :sex, :age, :city, :animal_type, :image).merge(user_pet_care_id: @user.id))
         if @animal.save
             redirect_to(animals_path, notice: 'Animal cadastrado com sucesso!')
 
